@@ -1,26 +1,83 @@
 function App() {
   return (
     <div className="wrapper clear">
-      <div className="overlay">
+      <div style={{ display: "none" }} className="overlay">
         <div className="drawer">
-          <h2>Корзина</h2>
-          <div className="cartItem d-flex align-center">
+          <h2 className="mb-30 d-flex justify-between">
+            Корзина{" "}
             <img
-              className="mr-20"
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt="Sneakers"
-            ></img>
-            <div className="mb-20">
-              <p className="mb-5"> Мужские кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              className="removeBtn cu-p"
+              src="/img/btn-remove.svg"
+              alt="Remove"
+            />
+          </h2>
+          <div className="items">
+            <div className="cartItem d-flex align-center">
+              <div
+                style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
+                className="cartItemImg"
+              ></div>
+              <div className="mr-20 flex">
+                <p className="mb-5"> Мужские кроссовки Nike Air Max 270</p>
+                <b>12 999 руб.</b>
+              </div>
+              <img
+                className="removeBtn"
+                src="/img/btn-remove.svg"
+                alt="Remove"
+              />
             </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+            <div className="cartItem d-flex align-center">
+              <div
+                style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
+                className="cartItemImg"
+              ></div>
+              <div className="mr-20 flex">
+                <p className="mb-5"> Мужские кроссовки Nike Air Max 270</p>
+                <b>12 999 руб.</b>
+              </div>
+              <img
+                className="removeBtn"
+                src="/img/btn-remove.svg"
+                alt="Remove"
+              />
+            </div>
+
+            <div className="cartItem d-flex align-center">
+              <div
+                style={{ backgroundImage: "url(/img/sneakers/1.jpg)" }}
+                className="cartItemImg"
+              ></div>
+              <div className="mr-20 flex">
+                <p className="mb-5"> Мужские кроссовки Nike Air Max 270</p>
+                <b>12 999 руб.</b>
+              </div>
+              <img
+                className="removeBtn"
+                src="/img/btn-remove.svg"
+                alt="Remove"
+              />
+            </div>
+          </div>
+          <div className="cartTotalBlock">
+            <ul>
+              <li>
+                <span>Итого</span>
+                <div></div>
+                <b>21 498 руб</b>
+              </li>
+              <li>
+                <span>Налог 5%</span>
+                <div></div>
+                <b>1874 руб</b>
+              </li>
+            </ul>
+            <button className="greenButton">
+              Оформить заказ<img src="img/arrow.svg" alt="Arrow"></img>
+            </button>
           </div>
         </div>
       </div>
-
       <header className="d-flex justify-between align-center p-40">
         <div className="d-flex align-center">
           <img width={40} height={40} src="/img/logo.png" alt="shop-logo" />
