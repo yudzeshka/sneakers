@@ -11,14 +11,8 @@ export default function Header(props) {
         </div>
       </div>
       <ul className="d-flex">
-        <li className="mr-30 cu-p">
-          <img
-            onClick={props.onClickCart}
-            width={18}
-            height={18}
-            src="/img/cart.svg"
-            alt="bag img"
-          />
+        <li onClick={props.onClickCart} className="mr-30 cu-p">
+          <img width={18} height={18} src="/img/cart.svg" alt="bag img" />
           <span>1205 руб.</span>
         </li>
         <li>
