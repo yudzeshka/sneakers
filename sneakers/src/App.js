@@ -1,6 +1,7 @@
 import Card from "./components/Card";
 import Drawer from "./components/Drawer";
 import Header from "./components/Header";
+import React from "react";
 
 const arr = [
   {
@@ -26,10 +27,12 @@ const arr = [
 ];
 
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false);
+
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex align-center mb-40 justify-between">
           {" "}
