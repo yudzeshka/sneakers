@@ -2,6 +2,7 @@ import Card from "./components/Card";
 import Drawer from "./components/Drawer";
 import Header from "./components/Header";
 import React from "react";
+import axios from "axios";
 
 function App() {
   const [items, setItems] = React.useState([]);
@@ -10,17 +11,28 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("https://61d3186eb4c10c001712b7b3.mockapi.io/items")
+    axios
+      .get("https://61d3186eb4c10c001712b7b3.mockapi.io/items")
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
+      });
+    axios
+      .get("https://61d3186eb4c10c001712b7b3.mockapi.io/cart")
+      .then((res) => {
+        setCartItems(res.data);
       });
   }, []);
 
   const onAddToCart = (obj) => {
+    axios.post("https://61d3186eb4c10c001712b7b3.mockapi.io/cart", obj);
+
     setCartItems((prev) => [...prev, obj]);
+  };
+
+  const onRemoveItem = (id) => {
+    axios.delete(`https://61d3186eb4c10c001712b7b3.mockapi.io/cart/${id}`);
+
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
   const onChangeSearshInput = (event) => {
@@ -29,7 +41,11 @@ function App() {
   return (
     <div className="wrapper clear">
       {cartOpened && (
-        <Drawer items={cartItems} onClose={() => setCartOpened(false)} />
+        <Drawer
+          onRemove={onRemoveItem}
+          items={cartItems}
+          onClose={() => setCartOpened(false)}
+        />
       )}
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40">
