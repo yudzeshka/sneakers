@@ -1,6 +1,6 @@
 import Card from "../Card";
 
-function Home({items,
+function Home({items,cartItems,
     searchValue,
     setSearchValue,
     onChangeSearshInput,
@@ -43,6 +43,7 @@ function Home({items,
                 key={item.title}
                 onPlus={(obj) => onAddToCart(obj)}
                 onFavorite={(obj) => onFavorites(obj)}
+                added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
                 {...item}
               />
             ))}
